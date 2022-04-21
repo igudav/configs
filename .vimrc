@@ -14,7 +14,6 @@ Plugin 'sirver/ultisnips'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 
@@ -26,7 +25,6 @@ Plugin 'python-mode/python-mode'
 Plugin 'junegunn/seoul256.vim'
 
 Plugin 'lervag/vimtex'
-Plug 'sirver/ultisnips'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,7 +62,6 @@ au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:U
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetsDir = '~/UltiSnips'
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set runtimepath+=~/.vim/bundle/ultisnips "required for UltiSnips
 
@@ -102,9 +99,9 @@ let g:seoul256_background = 233
 colorscheme seoul256
 
 " орфография
-" setlocal spell
-" set spelllang=ru,en
-" inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+setlocal spell
+set spelllang=ru,en
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " автосохранение
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -117,20 +114,16 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
 " комманды в русской раскладке
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+inoremap <C-space> <C-^>
 
-cmap <silent> <A-\> <C-^>
-imap <silent> <A-\> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
-nmap <silent> <A-\> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
-vmap <silent> <A-\> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
+" cmap <silent> <A-\> <C-^>
+" imap <silent> <A-\> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
+" nmap <silent> <A-\> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
+" vmap <silent> <A-\> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
 
 let g:ycm_key_list_stop_completion = ['<A-j>']
 let g:ycm_auto_trigger = 1
@@ -160,8 +153,11 @@ let g:AutoPairsMultilineClose = 0
 set splitbelow
 set splitright
 
-autocmd VimEnter * TagbarToggle
-autocmd VimEnter * NERDTree | wincmd p
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+if &filetype != "tex"
+    autocmd VimEnter * TagbarToggle
+    autocmd VimEnter * NERDTree | wincmd p
+    autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+    autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+endif
+
 
