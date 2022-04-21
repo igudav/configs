@@ -25,6 +25,9 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'python-mode/python-mode'
 Plugin 'junegunn/seoul256.vim'
 
+Plugin 'lervag/vimtex'
+Plug 'sirver/ultisnips'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,6 +109,18 @@ colorscheme seoul256
 " автосохранение
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 
+
+" vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " комманды в русской раскладке
 set keymap=russian-jcukenwin
