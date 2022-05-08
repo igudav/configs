@@ -131,3 +131,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+test -z "$TMUX" && (tmux attach || tmux new-session)
+
