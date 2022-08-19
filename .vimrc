@@ -164,3 +164,5 @@ endif
 set pastetoggle=<F2>
 nmap <F3> :set hls! <cr>
 
+set shell=/bin/bash
+

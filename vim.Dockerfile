@@ -30,4 +30,5 @@ RUN useradd -m -s /bin/bash -u $UID -G sudo $USERNAME
 USER $USERNAME
 WORKDIR /home/$USERNAME
 SHELL ["/bin/bash", "-c"]
+ENTRYPOINT vim
 

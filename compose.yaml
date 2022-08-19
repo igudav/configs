@@ -9,10 +9,11 @@ services:
     image: udovichenko-vim
     stdin_open: true
     tty: true
+    volumes:
+      - $HOME:$HOME
     deploy:
       resources:
         limits:
           cpus: 4
           memory: 1g
-    command: vim
 
