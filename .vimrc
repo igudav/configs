@@ -154,7 +154,7 @@ let g:AutoPairsMultilineClose = 0
 set splitbelow
 set splitright
 
-if &filetype != "tex"
+if &columns > 120
     autocmd VimEnter * TagbarToggle
     autocmd VimEnter * NERDTree | wincmd p
     autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
@@ -165,4 +165,7 @@ set pastetoggle=<F2>
 nmap <F3> :set hls! <cr>
 
 set shell=/bin/bash
+
+noremap j gj
+noremap k gk
 
