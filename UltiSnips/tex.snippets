@@ -57,9 +57,9 @@ else:
 endsnippet
 
 snippet dm "Math" wA
-\[
+\begin{equation*}
 	$1
-\] $0
+\end{equation*} $0
 endsnippet
 
 context "math()"
@@ -176,6 +176,18 @@ context "math()"
 priority 100
 snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+priority 10
+snippet "bm" "bm" riA
+\bm{$1}$0
+endsnippet
+
+context "math()"
+priority 100
+snippet "([a-zA-Z])bm" "bm" riA
+\bm{`!p snip.rv=match.group(1)`}
 endsnippet
 
 snippet <= "lower or equal slant" A
