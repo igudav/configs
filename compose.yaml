@@ -1,0 +1,18 @@
+services:
+  iu-vim:
+    build:
+      context: .
+      dockerfile: vim.Dockerfile
+      args:
+        - UID=${UID}
+        - USERNAME=${USER}
+    image: udovichenko-vim
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        limits:
+          cpus: 4
+          memory: 1g
+    command: vim
+

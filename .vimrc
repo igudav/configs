@@ -22,7 +22,8 @@ Plugin 'preservim/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'python-mode/python-mode'
-Plugin 'junegunn/seoul256.vim'
+Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'junegunn/fzf.vim'
 
 Plugin 'lervag/vimtex'
 
@@ -99,9 +100,9 @@ let g:seoul256_background = 233
 colorscheme seoul256
 
 " орфография
-setlocal spell
-set spelllang=ru,en
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+" setlocal spell
+" set spelllang=ru,en
+" inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " автосохранение
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -160,4 +161,6 @@ if &filetype != "tex"
     autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 endif
 
+set pastetoggle=<F2>
+nmap <F3> :set hls! <cr>
 

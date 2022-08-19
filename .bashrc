@@ -116,20 +116,26 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/igudav/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/mr_giraffe/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/mr_giraffe/anaconda3/etc/profile.d/conda.sh"
+if [ ! -e /.dockerenv ]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    uname="$(id -un)"
+    path_to_conda="/home/$uname/anaconda3/bin/conda"
+    __conda_setup="$($path_to_conda 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/igudav/anaconda3/bin:$PATH"
+        if [ -f "/home/$uname/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/$uname/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/$uname/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+
+    if [ -z "$TMUX" ]; then
+        tmux attach || tmux new-session
     fi
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-test -z "$TMUX" && (tmux attach || tmux new-session)
 
