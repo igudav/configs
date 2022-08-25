@@ -9,16 +9,12 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # install vim and YCM dependencies
 RUN apt-get update && apt-get install -y \
     sudo \
+    git \
     wget \
     build-essential \
     cmake \
     vim-nox \
     python3-dev \
-    mono-complete \
-    golang \
-    nodejs \
-    default-jdk \
-    npm \
     exuberant-ctags \
     && rm -rf /var/lib/apt/lists/*
 
