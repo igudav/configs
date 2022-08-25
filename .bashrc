@@ -139,7 +139,7 @@ if [ ! -e /.dockerenv ]; then
     unset __conda_setup
     # <<< conda initialize <<<
 
-    if [ -z "$TMUX" -a "$HOSTNAME" != "iu-thinkpad" ]; then
+    if [ -z "$TMUX" -a "$HOSTNAME" = "Megatron" ]; then
         tmux attach || tmux new-session
     fi
 fi
