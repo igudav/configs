@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     vim-nox \
     python3-dev \
     exuberant-ctags \
+    nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME
@@ -27,4 +28,3 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 SHELL ["/bin/bash", "-c"]
 ENTRYPOINT vim
-
