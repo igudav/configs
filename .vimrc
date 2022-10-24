@@ -164,8 +164,8 @@ nmap <F3> :set hls! <cr>
 
 set shell=/bin/bash
 
-noremap j gj
-noremap k gk
+nnoremap j gj
+nnoremap k gk
 
 
 

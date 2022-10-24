@@ -11,6 +11,7 @@ services:
     tty: true
     volumes:
       - $HOME:$HOME
+    memswap_limit: 1g
     deploy:
       resources:
         limits:
