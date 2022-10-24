@@ -20,7 +20,9 @@ ln -rs configs/.vimrc
 if [ -d .vim ]; then
     rm -rf .vim
 fi
-ln -rs configs/.vim
+mkdir .vim
+ln -rs configs/.vim/ftplugin .vim/ftplugin
+ln -rs configs/.vim/coc-settings.json .vim/coc-settings.json
 
 ln -rs configs/.tmux.conf
 ln -rs configs/.gitignore
