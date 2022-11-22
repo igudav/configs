@@ -94,6 +94,7 @@ set number
 set relativenumber
 set mouse=a
 
+set termguicolors
 colorscheme gruvbox
 set bg=dark
 

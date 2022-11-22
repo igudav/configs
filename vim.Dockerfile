@@ -16,8 +16,12 @@ RUN apt-get update && apt-get install -y \
     vim-nox \
     python3-dev \
     exuberant-ctags \
+    fzf \
     nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
+    
+RUN npm update -g npm && npm install -g n && n lts
 
 ARG USERNAME
 ARG UID
@@ -27,4 +31,4 @@ RUN useradd -m -s /bin/bash -u $UID -G sudo $USERNAME
 USER $USERNAME
 WORKDIR /home/$USERNAME
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT vim
+ENTRYPOINT bash
