@@ -17,19 +17,19 @@ endsnippet
 snippet beg "begin{} / end{}" b
 \begin{$1}
 	$0
-\end{$1} 
+\end{$1}
 endsnippet
 
 snippet eq "begin{equation}" b
 \begin{equation}\label{$1}
 	$0
-\end{equation} 
+\end{equation}
 endsnippet
 
 snippet fr "begin{frame}" b
 \begin{frame}{$1}
 $0
-\end{frame} 
+\end{frame}
 endsnippet
 
 snippet vbeg "begin{} / end{}" b
@@ -204,7 +204,7 @@ snippet . "" i
 endsnippet
 
 snippet ... "ldots" iA
-\ldots 
+\ldots
 endsnippet
 
 context "math()"
@@ -261,7 +261,7 @@ snippet -> "rightarrow" iA
 endsnippet
 
 context "math()"
-snippet \rightarrow "xrightarrow" 
+snippet \rightarrow "xrightarrow"
 \xrightarrow[${1:down}]{${2:up}} $0
 endsnippet
 
@@ -280,10 +280,10 @@ snippet st "change style of selected"
 endsnippet
 
 snippet fig "include figure" b
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{$1}
-    \caption{$2}
+    \caption{$2}%
     \label{fig:$3}
 \end{figure}
 $0

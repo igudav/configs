@@ -146,3 +146,7 @@ if [ ! -e /.dockerenv ]; then
         tmux attach || tmux new-session
     fi
 fi
+
+if [ -f ~/.bashrc_spec ]; then
+    . ~/.bashrc_spec
+fi
