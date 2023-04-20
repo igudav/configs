@@ -143,10 +143,13 @@ if [ ! -e /.dockerenv ]; then
     # <<< conda initialize <<<
 
     if [ -z "$TMUX" -a -n "$SSH_CONNECTION" ]; then
-        tmux attach || tmux new-session
+        tmux attach -d || tmux new-session
     fi
 fi
 
 if [ -f ~/.bashrc_spec ]; then
     . ~/.bashrc_spec
 fi
+
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"

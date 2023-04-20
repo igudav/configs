@@ -1,6 +1,6 @@
 # A Dockerfile that builds vim image with all dependencies
 
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 # configuring tzdata
 ENV TZ=Europe/Moscow
