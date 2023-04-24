@@ -153,3 +153,5 @@ fi
 
 shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
