@@ -1,46 +1,21 @@
-let g:ale_disable_lsp = 1
+call plug#begin()
 
-set nocompatible
-filetype off                  " required
+Plug '907th/vim-auto-save'
+Plug 'sirver/ultisnips'
+Plug 'jiangmiao/auto-pairs'
+Plug 'xolox/vim-misc'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
+Plug 'Vimjas/vim-python-pep8-indent'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/vim-auto-save'
-Plugin 'sirver/ultisnips'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'xolox/vim-misc'
-Plugin 'tpope/vim-fugitive'
-Plugin 'preservim/nerdtree'
-Plugin 'preservim/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'dense-analysis/ale'
-Plugin 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-Plugin 'rafi/awesome-vim-colorschemes'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'lervag/vimtex'
-Plugin 'Vimjas/vim-python-pep8-indent'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 " to make <A-#> bindings work in gnome terminal
 let c='a'
@@ -100,8 +75,8 @@ colorscheme gruvbox
 set bg=dark
 
 nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
+nmap <Leader>;f :Files<CR>
+nmap <Leader>;t :Tags<CR>
 
 " орфография
 " setlocal spell
@@ -109,13 +84,19 @@ nmap <Leader>r :Tags<CR>
 " inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " автосохранение
-let g:auto_save = 1  " enable AutoSave on Vim startup
-let g:auto_save_in_insert_mode = 0
+let g:auto_save_events = ["CursorHold"]
+let g:auto_save = 1
+" augroup autosave
+"     autocmd!
+"     autocmd BufRead * if &filetype == "" | setlocal ft=text | endif
+"     autocmd FileType * autocmd CursorHold <buffer> if &readonly == 0 | silent write | endif
+" augroup END
 
 " vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_latexmk_options='-pdf -shell-escape -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
@@ -129,11 +110,6 @@ inoremap <C-space> <C-^>
 " imap <silent> <A-\> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
 " nmap <silent> <A-\> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
 " vmap <silent> <A-\> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
-
-let g:ale_echo_msg_format = '[%linter%] %(code): %%s'
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fix_on_save = 1
-let g:airline#extensions#ale#enabled = 1
 
 " Переключение раскладок и индикация выбранной в данный момент раскладки -->
 set laststatus=2
@@ -179,7 +155,7 @@ set nowritebackup
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=1000
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.

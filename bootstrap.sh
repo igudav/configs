@@ -26,3 +26,7 @@ ln -rs configs/.vim/coc-settings.json .vim/coc-settings.json
 
 ln -rs configs/.tmux.conf
 ln -rs configs/.gitignore
+
+# configuring vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
