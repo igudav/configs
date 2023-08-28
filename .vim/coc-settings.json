@@ -1,4 +1,6 @@
 {
-    "diagnostic.displayByAle": true,
-    "suggest.noselect": true
+    "suggest.noselect": true,
+    "python.pythonPath": "~/configs/python.sh",
+    "diagnostic.checkCurrentLine": true,
+    "coc.preferences.formatOnSave": true
 }
