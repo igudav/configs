@@ -125,23 +125,6 @@ if ! shopt -oq posix; then
 fi
 
 if [ ! -e /.dockerenv ]; then
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    uname="$(id -un)"
-    path_to_conda="/home/$uname/anaconda3/bin/conda"
-    __conda_setup="$($path_to_conda 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/home/$uname/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/$uname/anaconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/home/$uname/anaconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-
     if [ -z "$TMUX" -a -n "$SSH_CONNECTION" ]; then
         tmux attach -d || tmux new-session
     fi
@@ -155,3 +138,27 @@ shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/igudav/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/igudav/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/igudav/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/igudav/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/igudav/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/igudav/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
