@@ -1,6 +1,11 @@
 {
     "suggest.noselect": true,
-    "python.pythonPath": "~/configs/python.sh",
     "diagnostic.checkCurrentLine": true,
-    "coc.preferences.formatOnSave": true
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnSaveFiletypes": ["python", "cpp", "c"],
+
+    "python.pythonPath": "~/configs/python.sh",
+    "python.formatting.provider": "black",
+    
+    "clangd.fallbackFlags": [ "-std=c++20" ]
 }
